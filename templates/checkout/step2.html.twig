@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations client{% endblock %}
+
+{% block body %}
+    <h1>Informations client</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.email) }}
+
+    <h2>Adresse de livraison</h2>
+    {{ form_row(form.defaultShippingAddress.street) }}
+    {{ form_row(form.defaultShippingAddress.city) }}
+    {{ form_row(form.defaultShippingAddress.zipCode) }}
+    {{ form_row(form.defaultShippingAddress.country) }}
+
+    <h2>Adresse de facturation</h2>
+    {{ form_row(form.defaultBillingAddress.street) }}
+    {{ form_row(form.defaultBillingAddress.city) }}
+    {{ form_row(form.defaultBillingAddress.zipCode) }}
+    {{ form_row(form.defaultBillingAddress.country) }}
+
+    <button class="btn btn-primary">Continuer</button>
+    {{ form_end(form) }}
+{% endblock %}

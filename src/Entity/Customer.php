@@ -6,6 +6,7 @@ use App\Repository\CustomerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 class Customer
@@ -13,19 +14,23 @@ class Customer
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    #[Assert\NotBlank]
+    #[Assert\Email(
+        message: 'L\'adresse "{{ value }}" n\'est pas une adresse email valide.'
+    )]
+    private string $email;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Address $defaultShippingAddress = null;
+    private Address $defaultShippingAddress;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Address $defaultBillingAddress = null;
+    private Address $defaultBillingAddress;
 
     /**
      * @var Collection<int, Address>

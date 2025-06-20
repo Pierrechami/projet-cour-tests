@@ -18,10 +18,6 @@ class AddressForm extends AbstractType
             ->add('city')
             ->add('zipCode')
             ->add('country')
-            ->add('customer', EntityType::class, [
-                'class' => Customer::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

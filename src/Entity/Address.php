@@ -16,20 +16,20 @@ class Address
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $street = null;
+    private string $street;
 
     #[ORM\Column(length: 255)]
-    private ?string $city = null;
+    private string $city;
 
     #[ORM\Column(length: 255)]
-    private ?string $zipCode = null;
+    private int $zipCode;
 
     #[ORM\Column(length: 255)]
-    private ?string $country = null;
+    private string $country;
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     private ?Customer $customer = null;
-    
+
 
     /**
      * @var Collection<int, Order>

@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14ea96af-a701-4005-a314-01dacd170d06" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/CheckoutController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/checkout/step1.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/checkout/step2.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AddressForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AddressForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CustomerForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CustomerForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/checkout/step1.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/checkout/step1.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +180,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750313840997</updated>
-      <workItem from="1750313846180" duration="31481000" />
+      <workItem from="1750313846180" duration="34417000" />
     </task>
     <servers />
   </component>

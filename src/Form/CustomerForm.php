@@ -16,15 +16,8 @@ class CustomerForm extends AbstractType
         $builder
             ->add('name')
             ->add('email')
-            ->add('defaultShippingAddress', EntityType::class, [
-                'class' => Address::class,
-                'choice_label' => 'id',
-            ])
-            ->add('defaultBillingAddress', EntityType::class, [
-                'class' => Address::class,
-                'choice_label' => 'id',
-            ])
-        ;
+            ->add('defaultShippingAddress', AddressForm::class)
+            ->add('defaultBillingAddress', AddressForm::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
