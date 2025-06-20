@@ -2,9 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Address;
 use App\Entity\Customer;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +15,12 @@ class CustomerForm extends AbstractType
         $builder
             ->add('name')
             ->add('email')
-            ->add('defaultShippingAddress', AddressForm::class)
-            ->add('defaultBillingAddress', AddressForm::class);
+            ->add('defaultShippingAddress', AddressForm::class, [
+                'label' => 'Adresse de livraison',
+            ])
+            ->add('defaultBillingAddress', AddressForm::class, [
+                'label' => 'Adresse de facturation',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

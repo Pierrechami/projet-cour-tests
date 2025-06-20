@@ -37,9 +37,15 @@ class CheckoutController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $shipping = $customer->getDefaultShippingAddress();
+            $billing = $customer->getDefaultBillingAddress();
+
+            $shipping->setCustomer($customer);
+            $billing->setCustomer($customer);
+
             $em->persist($customer);
-            $customer->getDefaultShippingAddress()->setCustomer($customer);
-            $customer->getDefaultBillingAddress()->setCustomer($customer);
+            $em->persist($shipping);
+            $em->persist($billing);
 
             $em->flush();
 

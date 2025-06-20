@@ -32,10 +32,7 @@ class Customer
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private Address $defaultBillingAddress;
 
-    /**
-     * @var Collection<int, Address>
-     */
-    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'users')]
+    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'customer')]
     private Collection $addresses;
 
     /**
