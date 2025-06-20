@@ -24,6 +24,13 @@
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.product.price }} €</td>
                     <td>{{ item.total | number_format(2, ',', '.') }} €</td>
+                    <td>
+                        <form action="{{ path('cart_remove', { id: item.product.id }) }}" method="post" style="display: inline">
+                            <input type="hidden" name="_token" value="{{ item.product.id }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

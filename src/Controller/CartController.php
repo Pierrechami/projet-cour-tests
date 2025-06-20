@@ -38,4 +38,12 @@ class CartController extends AbstractController
         return $this->redirectToRoute('show_product', ['id' => $id]);
     }
 
+    #[Route('/remove/{id}', name: 'cart_remove', methods: ['POST'])]
+    public function remove(string $id, CartService $cartService): RedirectResponse
+    {
+        $cartService->removeItem($id);
+        $this->addFlash('success', 'Produit retiré du panier.');
+        return $this->redirectToRoute('cart_index');
+    }
+
 }

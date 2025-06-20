@@ -91,5 +91,11 @@ class CartService
         ];
     }
 
+    public function removeItem(string $productId): void
+    {
+        $cart = $this->getCart();
+        unset($cart[$productId]);
+        $this->requestStack->getSession()->set('cart', $cart);
+    }
 
 }
