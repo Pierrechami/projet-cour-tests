@@ -5,6 +5,7 @@
 {% block body %}
     <h1>Catalogue des produits</h1>
 
+    <p><a href="{{ path('cart_index') }}">Mon panier</a></p>
     <div class="product-list" style="display: flex; flex-wrap: wrap; gap: 20px;">
         {% for product in products %}
             <div class="product-item" style="border: 1px solid #ccc; padding: 10px; width: 200px;">
