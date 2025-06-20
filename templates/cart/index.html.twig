@@ -33,6 +33,11 @@
                     </td>
                 </tr>
             {% endfor %}
+            <form action="{{ path('cart_clear') }}" method="post">
+                <input type="hidden" name="_token" value="{{ 'clear_cart' }}">
+                <button type="submit" class="btn btn-warning">Vider le panier</button>
+            </form>
+
             </tbody>
         </table>
 

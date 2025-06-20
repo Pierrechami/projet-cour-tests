@@ -98,4 +98,9 @@ class CartService
         $this->requestStack->getSession()->set('cart', $cart);
     }
 
+    public function cleanCart ():void
+    {
+        $this->requestStack->getSession()->remove('cart');
+    }
+
 }
