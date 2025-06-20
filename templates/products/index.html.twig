@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue produits{% endblock %}
+
+{% block body %}
+    <h1>Catalogue des produits</h1>
+
+    <div class="product-list" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        {% for product in products %}
+            <div class="product-item" style="border: 1px solid #ccc; padding: 10px; width: 200px;">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description_short }}</p>
+                <p><strong>{{ product.price }} €</strong></p>
+                <a href="{{ path('show_product', { id: product.id }) }}">Voir ce produit</a>
+            </div>
+        {% else %}
+            <p>Aucun produit trouvé.</p>
+        {% endfor %}
+    </div>
+
+    {% set totalPages = (total / limit)|round(0, 'ceil') %}
+   <div style="margin-top:20px;">
+        {% if page > 1 %}
+            <a href="{{ path('product_index', { page: page - 1, category: category, name: name }) }}">← Précédent</a>
+        {% endif %}
+
+        <span> Page {{ page }} / {{ totalPages }} </span>
+
+        {% if page < totalPages %}
+            <a href="{{ path('product_index', { page: page + 1, category: category, name: name }) }}">Suivant →</a>
+        {% endif %}
+    </div>
+{% endblock %}
