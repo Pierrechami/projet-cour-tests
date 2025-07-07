@@ -7,7 +7,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class ProductService
 {
     private HttpClientInterface $httpClient;
-    private const API_URL = 'http://localhost:3000/products';
+    private const API_URL = 'http://localhost:3001/products';
 
     public function __construct(HttpClientInterface $httpClient)
     {

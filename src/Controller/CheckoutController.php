@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Form\CustomerForm;
+use App\Form\TransporterSelectionFormType;
 use App\Service\Cart\CartService;
+use App\Service\Carrier\CarrierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,5 +60,31 @@ class CheckoutController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/step3', name: 'checkout_step3')]
+    public function step3(
+        Request $request,
+        CarrierService $carrierService
+    ): Response {
+        $carriers = $carrierService->getCompatibleCarriers();
+
+        $form = $this->createForm(TransporterSelectionFormType::class, null, [
+            'carrier_choices' => $carriers,
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $carrierId = $form->get('carrierId')->getData();
+            $request->getSession()->set('selected_carrier_id', $carrierId);
+
+            return $this->redirectToRoute('checkout_step4');
+        }
+
+        return $this->render('checkout/step3.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }
 

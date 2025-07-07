@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14ea96af-a701-4005-a314-01dacd170d06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Form/TransporterSelectionFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/carrier/CarrierService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/checkout/step3.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CheckoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CustomerForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CustomerForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/checkout/step2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/checkout/step2.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750313840997</updated>
-      <workItem from="1750313846180" duration="35630000" />
+      <workItem from="1750313846180" duration="38132000" />
     </task>
     <servers />
   </component>

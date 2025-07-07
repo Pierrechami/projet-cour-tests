@@ -14,28 +14,28 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $orderDate;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Customer $customer = null;
+    private Customer $customer;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Address $shippingAddress = null;
+    private Address $shippingAddress;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Address $billingAddress = null;
+    private Address $billingAddress;
 
     #[ORM\Column(length: 255)]
-    private ?string $carrierId = null;
+    private string $carrierId;
 
     #[ORM\Column(length: 255)]
-    private ?string $paymentId = null;
+    private string $paymentId;
 
     #[ORM\Column]
-    private ?float $orderTotal = null;
+    private float $orderTotal;
 
     /**
      * @var Collection<int, OrderItem>

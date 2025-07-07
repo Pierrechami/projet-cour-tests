@@ -1,0 +1,17 @@
+<h2>Étape 3 : Choix du Transporteur</h2>
+
+{{ form_start(form) }}
+
+<div class="form-group">
+    {% for choice in form.carrierId %}
+        <div style="margin-bottom: 1.5em;">
+            {{ form_widget(choice) }}
+            {{ form_label(choice, null, { 'label_attr': {'style': 'display: inline; margin-left: 0.5em;'} }) }}
+        </div>
+    {% endfor %}
+</div>
+
+<button type="submit" class="btn btn-primary mt-3">Étape suivante</button>
+{{ form_end(form) }}
+
+<a href="{{ path('checkout_step2') }}" class="btn btn-secondary mt-3">Étape précédente</a>
