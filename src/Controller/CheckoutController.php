@@ -78,7 +78,7 @@ class CheckoutController extends AbstractController
             $carrierId = $form->get('carrierId')->getData();
             $request->getSession()->set('selected_carrier_id', $carrierId);
 
-            return $this->redirectToRoute('checkout_step4');
+            return $this->redirectToRoute('checkout_step4'); 
         }
 
         return $this->render('checkout/step3.html.twig', [
