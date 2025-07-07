@@ -1,5 +1,9 @@
 <h2>Étape 3 : Choix du Transporteur</h2>
 
+<p><strong>Sous-total du panier :</strong> <span id="subTotal">{{ subTotal|number_format(2, '.', ' ') }} €</span></p>
+<p><strong>Frais de livraison :</strong> <span id="shippingCost">0.00 €</span></p>
+<p><strong>Total :</strong> <span id="totalAmount">{{ subTotal|number_format(2, '.', ' ') }} €</span></p>
+
 {{ form_start(form) }}
 
 <div class="form-group">
@@ -15,3 +19,30 @@
 {{ form_end(form) }}
 
 <a href="{{ path('checkout_step2') }}" class="btn btn-secondary mt-3">Étape précédente</a>
+
+<script>
+    // Tableau JS des prix des transporteurs (clé = id, valeur = prix)
+    const carrierPrices = {
+        {% for carrier in carriers %}
+            '{{ carrier.id }}': {{ carrier.price|replace({',':'.'}) }},
+        {% endfor %}
+    };
+    const subTotal = parseFloat(document.getElementById('subTotal').textContent.replace(',', '.'));
+
+    function updateTotal() {
+        const checked = document.querySelector('input[name=\"carrierId\"]:checked');
+        let shipping = 0;
+        if (checked && carrierPrices[checked.value] !== undefined) {
+            shipping = carrierPrices[checked.value];
+        }
+        document.getElementById('shippingCost').textContent = shipping.toFixed(2) + ' €';
+        document.getElementById('totalAmount').textContent = (subTotal + shipping).toFixed(2) + ' €';
+    }
+
+    document.querySelectorAll('input[name=\"carrierId\"]').forEach(radio => {
+        radio.addEventListener('change', updateTotal);
+    });
+
+    // Mise à jour initiale si un transporteur est déjà sélectionné
+    updateTotal();
+</script>

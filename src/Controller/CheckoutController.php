@@ -64,7 +64,8 @@ class CheckoutController extends AbstractController
     #[Route('/step3', name: 'checkout_step3')]
     public function step3(
         Request $request,
-        CarrierService $carrierService
+        CarrierService $carrierService,
+        CartService $cartService
     ): Response {
         $carriers = $carrierService->getCompatibleCarriers();
 
@@ -81,8 +82,11 @@ class CheckoutController extends AbstractController
             return $this->redirectToRoute('checkout_step4'); 
         }
 
+        $cartData = $cartService->getDetailedCart(); 
         return $this->render('checkout/step3.html.twig', [
             'form' => $form->createView(),
+            'subTotal' => $cartData['subTotal'],
+            'carriers' => $carriers, 
         ]);
     }
 
