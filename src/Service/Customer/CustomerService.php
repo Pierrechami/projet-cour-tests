@@ -4,6 +4,7 @@ namespace App\Service\Customer;
 
 use App\Entity\Address;
 use App\Entity\Customer;
+use App\Repository\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -11,7 +12,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class CustomerService
 {
     private RequestStack $requestStack;
-
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
