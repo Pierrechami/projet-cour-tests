@@ -3,6 +3,7 @@
 namespace App\Service\Customer;
 
 use App\Entity\Address;
+use App\Entity\Customer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -27,7 +28,7 @@ class CustomerService
         if (!$customerId){
             return null;
         } 
-        $customer = $em->getRepository(\App\Entity\Customer::class)->find($customerId);
+        $customer = $em->getRepository(Customer::class)->find($customerId);
         return $customer ? $customer->getDefaultShippingAddress() : null;
     }
 }
