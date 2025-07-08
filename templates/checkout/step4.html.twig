@@ -1,0 +1,73 @@
+<h2>Étape 4 : Paiement & Confirmation</h2>
+
+<h3>Récapitulatif de la commande</h3>
+<ul>
+    {% for item in cartItems %}
+        <li>
+            <strong>{{ item.product.name }}</strong> x {{ item.quantity }}<br>
+            Prix unitaire : {{ item.product.price|number_format(2, '.', ' ') }} €<br>
+            Sous-total : {{ (item.product.price * item.quantity)|number_format(2, '.', ' ') }} €
+        </li>
+    {% endfor %}
+</ul>
+
+<p><strong>Sous-total :</strong> {{ subTotal|number_format(2, '.', ' ') }} €</p>
+
+<h3>Adresse de livraison</h3>
+{% if shippingAddress %}
+    <p>
+        {{ shippingAddress.street }}<br>
+        {{ shippingAddress.zipCode }} {{ shippingAddress.city }}<br>
+        {{ shippingAddress.country }}
+    </p>
+{% else %}
+    <p><em>Aucune adresse de livraison trouvée.</em></p>
+{% endif %}
+
+<h3>Transporteur choisi</h3>
+{% if selectedCarrier %}
+    <p>
+        <strong>{{ selectedCarrier.name }}</strong> ({{ selectedCarrier.price|number_format(2, '.', ' ') }} €)<br>
+        {{ selectedCarrier.service_type }}<br>
+        Zone : {{ selectedCarrier.area_served }}<br>
+        Contact : {{ selectedCarrier.contact_email }}, {{ selectedCarrier.phone }}
+    </p>
+{% else %}
+    <p><em>Aucun transporteur sélectionné.</em></p>
+{% endif %}
+
+<p><strong>Frais de livraison :</strong> {{ shippingCost|number_format(2, '.', ' ') }} €</p>
+<p><strong>Total à payer :</strong> {{ total|number_format(2, '.', ' ') }} €</p>
+
+<form id="payment-form" method="post">
+    <button type="submit" class="btn btn-success" id="pay-btn">Payer</button>
+</form>
+
+<div id="payment-message" style="display:none; margin-top:20px; font-size:1.3em; color:green;">
+    <span id="payment-spinner" style="display:inline-block; margin-right:10px;">⏳</span>
+    Paiement en cours...
+</div>
+
+<a href="{{ path('checkout_carrier_selection') }}" class="btn btn-secondary mt-3">Retour au choix du transporteur</a>
+
+<script>
+document.getElementById('payment-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('pay-btn');
+    btn.disabled = true;
+    btn.textContent = 'Paiement...';
+    const msg = document.getElementById('payment-message');
+    msg.style.display = 'block';
+    msg.innerHTML = '<span id="payment-spinner" style="display:inline-block; margin-right:10px;">⏳</span>Paiement en cours...';
+
+    // Animation spinner + message accepté après 1.5s
+    setTimeout(function() {
+        document.getElementById('payment-spinner').textContent = '✅';
+        msg.innerHTML = '<span style="margin-right:10px;">✅</span>Paiement accepté !';
+        // Redirection après 1s (optionnel)
+        setTimeout(function() {
+            e.target.submit(); // soumet le formulaire pour valider la commande côté serveur
+        }, 1000);
+    }, 1500);
+});
+</script> 

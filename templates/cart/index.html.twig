@@ -43,5 +43,5 @@
 
         <h3>Sous-total : {{ subTotal | number_format(2, ',', '.') }} €</h3>
     {% endif %}
-    <a href="{{ path('checkout_step1') }}">Valider ma commande</a>
+    <a href="{{ path('checkout_cart_review') }}">Valider ma commande</a>
 {% endblock %}

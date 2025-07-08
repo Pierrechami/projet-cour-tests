@@ -102,5 +102,9 @@ class CartService
     {
         $this->requestStack->getSession()->remove('cart');
     }
+    public function getOrderTotal($cartData, $shippingCost): float
+    {
+        return $cartData['subTotal'] + $shippingCost;
+    }
 
 }

@@ -35,5 +35,17 @@ class CarrierService
             return isset($carrier['max-weight']) && $carrier['max-weight'] >= $totalWeightKg;
         });
     }
+    public function getSelectedCarrier($session): ?array
+    {
+        $selectedCarrierId = $session->get('selected_carrier_id');
+        $carriers = $this->getCompatibleCarriers();
+        foreach ($carriers as $carrier) {
+            if ($carrier['id'] === $selectedCarrierId) {
+                return $carrier;
+            }
+        }
+        return null;
+    }
+
 }
 
