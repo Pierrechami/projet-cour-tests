@@ -1,0 +1,45 @@
+[ERROR] The test type must be one of "TestCase", "KernelTestCase", "WebTestCase", "ApiTestCase", "PantherTestCase", "CustomerServiceTest" given.
+```
+signifie que lors de la génération d’un test avec `php bin/console make:test`, il faut choisir un type de test reconnu par Symfony et PHPUnit.
+
+---
+
+## Explications et conseils
+
+- **Quand tu utilises `make:test`, il te demande le nom du test et parfois le type de base à utiliser.**
+- Les types valides sont :  
+  - `TestCase` (test unitaire pur)
+  - `KernelTestCase` (test avec le kernel Symfony, pour les services)
+  - `WebTestCase` (test fonctionnel, pour les contrôleurs)
+  - `ApiTestCase` (pour les API)
+  - `PantherTestCase` (pour les tests E2E avec navigateur)
+
+- **Tu ne dois pas inventer un type comme `CustomerServiceTest`** (c’est le nom du fichier, pas le type de base).
+
+---
+
+## Exemple de bonne commande
+
+Pour un test fonctionnel de contrôleur :
+```
+php bin/console make:test ProductsControllerTest
+```
+→ Puis choisis `WebTestCase` quand il te le propose.
+
+Pour un test unitaire de service :
+```
+php bin/console make:test CustomerServiceTest
+```
+→ Puis choisis `KernelTestCase` (si tu veux tester avec le container Symfony) ou `TestCase` (si tu veux un test unitaire pur, sans dépendances Symfony).
+
+---
+
+## À retenir
+
+- **Le nom du fichier de test** = le nom que tu veux (ex : `CustomerServiceTest`)
+- **Le type de test** = un des types proposés par Symfony (voir liste ci-dessus)
+
+---
+
+Veux-tu que je te guide pas à pas pour générer un test pour un contrôleur ou un service précis ?  
+Ou tu veux un exemple de contenu de test pour l’un de tes fichiers ?
